@@ -1,0 +1,70 @@
+<?header("Content-Type:text/html; charset=utf-8");
+
+//mysql 데이터베이스 등록하기
+
+$name=$_POST[name];
+$id=$_POST[id];
+$password=$_POST[password];
+
+
+/*
+$mobilechk = '/(iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)/i'; 
+
+ // 모바일 접속인지 PC로 접속했는지 체크합니다.
+ if(preg_match($mobilechk, $_SERVER['HTTP_USER_AGENT'])) {
+    echo 'You are using Mobile.'; 
+ } else { 
+    echo 'You are using PC .'; 
+ } 
+
+*/
+$connect=mysqli_connect("localhost","dlaak0630","tkdals12");
+
+ 
+
+if(!$connect){
+	 echo "연결에 실패 하였습니다.". mysqli_error();
+ }
+
+mysqli_select_db($connect,"dlaak0630");
+
+$query="select name from members where id='$id' and password='$password'";
+
+$result=mysqli_query($connect,$query);
+
+$data=mysqli_num_rows($result);
+
+if(isset($data)){
+//if($data==1){
+	//session_start();
+	//$_SESSION['id']=$id;
+  //  $userID=setcookie("userID","Loginid",time()+60*60*24,'/');
+//	$_COOKIE[userID]=$id;
+	//$cookie_value=$_COOKIE[userID];
+//	echo $cookie_value;
+//	$user=$_COOKIE[userID];
+	//echo "$user";
+	//if($userID){
+	//echo $userID;
+	//} 
+	//header("location:qqqqqqq.php");
+	echo $data[1];
+	sleep(1);
+	
+}
+else{
+	
+	echo "failer";
+	//header("Location:http://stylejonline.ddns.net/login_done.php");
+	
+}
+
+
+
+
+
+mysqli_close;
+
+
+ ?>
+ 

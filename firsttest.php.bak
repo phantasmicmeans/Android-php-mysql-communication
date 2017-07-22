@@ -1,0 +1,26 @@
+<?php 
+header('Content-Type: firsttest/php; charset=UTF-8');
+	// Get Post Data
+	$data = urldecode($_POST['data']);
+	
+	$jsonData      = array();
+	$jsonTempData  = array();
+	 
+	 for($i=1;$i<4; $i++)
+	   {
+		  $jsonTempData = array();
+		  $jsonTempData['name'] 		= $data.$i;
+		  $jsonTempData['number'] 		= $data.$i;
+		  $jsonTempData['date_added'] 	= $data.$i;
+		  
+		  $jsonData[] = $jsonTempData;
+	   }
+	
+	 $outputArr = array();
+	 $outputArr['Android'] = $jsonData;
+	 
+	// Encode Array To JSON Data
+	print_r(json_encode($outputArr));
+	//출력결과 예 {"Android":[{"name":"1","number":"1","date_added":"1"},{"name":"2","number":"2","date_added":"2"},{"name":"3","number":"3","date_added":"3"}]} 
+	
+ ?>

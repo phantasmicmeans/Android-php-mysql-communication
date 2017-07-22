@@ -1,0 +1,38 @@
+<?
+header("Content-Type: text/html; charset=UTF-8");
+
+//닉네임 아이디 출력 ->파싱용
+$connect=mysqli_connect("localhost","dlaak0630","tkdals12");
+mysqli_select_db($connect,"dlaak0630");
+
+
+if (mysqli_connect_errno($connect))  
+{  
+   echo "Failed to connect to MySQL: " . mysqli_connect_error();  
+}  
+
+mysqli_set_charset($connect,"utf8");  
+
+$res=mysqli_query($connect,"select name,id from Members");
+$result=array();
+
+while($row=mysqli_fetch_array($res)){
+
+
+
+	array_push($result,
+	array('name'=>$row[0],'id'=>$row[1]
+		));
+
+echo "{\"name\":\"$row[name]\",\"id\":\"$row[id]\"},";
+
+}
+
+//$rows=array("result"=>$result);
+//echo json_encode($rows);
+
+
+mysqli_close($connect);
+
+?>
+   

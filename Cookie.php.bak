@@ -1,0 +1,22 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+
+<?
+$name=$_POST[name];
+$id=$_POST[id];
+$password=$_POST[password];
+
+$_COOKIE[userID]=$id;
+$cookie_value=$_COOKIE[userID];
+echo $cookie_value;
+
+//$userID=$_COOKIE[userID];
+
+//echo "쿠키 'userID':{$userID}";
+	sleep(1);
+
+?>
+</html>

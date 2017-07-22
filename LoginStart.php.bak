@@ -1,0 +1,30 @@
+
+
+<script>
+ session_start();
+</script>
+
+<?
+ if($_COOKIE['hwi']){?>
+
+
+ <?=$id?>
+ <?
+ $ary[] = "UTF-8"; 
+$ary[] = "EUC-KR"; 
+$ary[] = "ASCII"; 
+$ary[] = "JIS"; 
+$ary[] = "eucjp-win"; 
+$ary[] = "sjis-win"; 
+$ary[] = "euc-jp"; 
+
+ echo iconv('ANIS', 'UTF-8', $_COOKIE['hwi'])?>님 로그인하셨습니다
+ 
+ 
+ <?}else{?>
+ 
+ <br>
+  
+ <?}
+  
+
